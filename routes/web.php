@@ -4,7 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\GeolocationController;
+use App\Http\Controllers\UsersImportController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ScoreboardController;
 
+use App\Http\Controllers\API\MobileController;
+use App\Http\Controllers\API\MoviesController;
+use App\Http\Controllers\movieController;
+
+use App\Http\Controllers\API\BooksController;
 
 
 /*
@@ -18,9 +26,13 @@ use App\Http\Controllers\GeolocationController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('pages.blankpage');
-});
+})->name('home');
+
+// Route::get('/', function () {
+//     return view('pages.HALAMAN');
+// });
 
 Route::get('/dataCustomer', [CustomerController::class, 'indexCustomer'])->name('dataCustomer');
 Route::get('/tambahCustomer', [CustomerController::class, 'list']);
@@ -57,9 +69,45 @@ Route::get('/scan-toko', [GeolocationController::class, 'scan_toko']);
 Route::get('/findToko', [GeolocationController::class, 'findToko']);
 
 
-
-
-
-
 Route::get('/toko_barcode{id}', [GeolocationController::class, 'toko_barcode']);
 Route::get('toko-barcode/{id}', [GeolocationController::class,'toko_barcode'])->name('toko-barcode');
+
+Route::get('/excel', [UsersImportController::class, 'create']);
+Route::post('/excel-import', [UsersImportController::class, 'store']);
+
+Route::get('/dataCust', [UsersImportController::class, 'index']);
+
+Route::get('/login', function () {
+    return view('pages.login');
+});
+
+Route::get('login/google', [LoginController::class,'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [LoginController::class,'handleGoogleCallback']);
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout',function(){
+    Auth::logout();
+    return  redirect ('/login');
+})->name('logout');
+
+//scoreboard
+Route::get('/scoreboard', [ScoreboardController::class, 'scoreboard']);
+Route::get('/scoreboard-controller', [ScoreboardController::class, 'index']);
+Route::post('/scoreboard-controller/update', [ScoreboardController::class, 'store']);
+Route::get('/messages', [ScoreboardController::class, 'message']);
+
+//movies
+Route::resource('/api/mobiles',MobileController::class);
+//movie
+Route::resource('/uploud-movie',movieController::class);
+Route::get('/api/moviesnowplaying', [MoviesController::class,'getMoviesNP']); 
+Route::get('/api/moviesbrowse', [MoviesController::class,'getMoviesBrowse']); 
+Route::get('/api/moviescomingsoon', [MoviesController::class,'getMoviesCS']);
+
+//BOOKS
+Route::get('/book',[BooksController::class,'book']);
+Route::get('/book/insertBook', [BooksController::class, 'create']);
+Route::get('/book/editBook/{id}', [BooksController::class, 'edit']);
+Route::post('/book/tambahBooks', [BooksController::class, 'tambahBook']);
+Route::put('/book/updateBook/{id}', [BooksController::class, 'updateBook']);
+Route::delete('/book/hapus/{id}', [BooksController::class, 'hapus']);

@@ -4,12 +4,16 @@ return [
     'providers' =>[
         Milon\Barcode\BarcodeServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     'aliases' => [
         'DNS1D'=>Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D'=>Milon\Barcode\Facades\DNS2DFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
     /*

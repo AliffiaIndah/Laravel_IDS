@@ -1,0 +1,9 @@
+body {
+    background: url("https://blog.kakaocdn.net/dn/zmbR9/btqNWfWDWRK/Y6e17NKkwqhFErFW4Zm6Kk/img.jpg")
+        no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    opacity: 3;
+}

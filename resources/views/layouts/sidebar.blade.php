@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
-      <img src="{{asset ('assets')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Aliffia Indah</span>
+    <a href="" class="brand-link">
+      <img src="{{asset ('assets')}}/dist/img/wallpaper1.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Website Toko Barang</span>
     </a>
 
     <!-- Sidebar -->
@@ -11,10 +11,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset ('assets')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Aliffia Indah</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <a class="nav-link">
+            <a href="/home"class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -99,7 +99,7 @@
               <li class="nav-item">
                 <a href="/scanner" class="nav-link">
                   <i class="fas fa-barcode nav-icon"></i>
-                  <p>Scan Barcode</p>
+                  <p>Scan Barcode Barang</p>
                 </a>
               </li>
               </ul>
@@ -129,11 +129,58 @@
               <li class="nav-item">
                 <a href="/scan-toko" class="nav-link">
                   <i class="fas fa-qrcode nav-icon"></i>
-                  <p>Scan Toko</p>
+                  <p>Scan Lokasi Toko</p>
                 </a>
               </li>
               </ul>
           </li>
+
+          <li class="nav-item has-treeview">
+            <a class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+              <p>
+                Excel
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/excel" class="nav-link">
+                <i class="fas fa-file-import nav-icon"></i>
+                  <p>Import Excel</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dataCust" class="nav-link">
+                <i class="fas fa-file-excel nav-icon"></i>
+                  <p>Data Cust</p>
+                </a>
+              </li>
+              
+              </ul>
+          </li>
+
+          
+
+          <li class="nav-item has-treeview">
+            <a href="/scoreboard-controller" class="nav-link">
+              <i class="nav-icon fas fa-futbol"></i>
+              <p>
+                Scoreboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="/book" class="nav-link">
+              <i class="nav-icon fas fa-futbol"></i>
+              <p>
+                Data Books
+              </p>
+            </a>
+          </li>
+
+          
 
 
         </ul>
